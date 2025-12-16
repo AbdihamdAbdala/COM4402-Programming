@@ -1,0 +1,60 @@
+# ----------------------------------------
+# JetBrains IDEs (PyCharm / IntelliJ)
+# ----------------------------------------
+.idea/
+*.iml
+
+# User-specific IDE settings
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf/
+
+# AWS / JetBrains Cloud settings
+.idea/**/aws.xml
+
+# Datasource local storage
+.idea/**/dataSources/
+.idea/**/dataSources.local.xml
+
+# Gradle (if project uses it)
+.idea/**/gradle.xml
+.idea/**/libraries/
+
+# File-based project format
+*.iws
+
+# ----------------------------------------
+# Python / venv
+# ----------------------------------------
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Virtual environment backup files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ----------------------------------------
+# OS Generated Files
+# ----------------------------------------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
