@@ -1,11 +1,10 @@
 start_number = int(input("Enter start number:"))
 
-while start_number:
-    if start_number < 1:
+while start_number >= 0:
+    if start_number == 0:
         print("Lift off!")
-        start_number -= 1
-        break;
+        break
     else:
         print("Countdown", start_number)
-        start_number -= 1
+    start_number -= 1
 
