@@ -1,5 +1,26 @@
 balance = 0.0
 
+def show_menu():
+    global balance
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("0. Exit")
+    choice = int(input("Enter choice: "))
+
+    match choice:
+        case 1:
+            balance = deposit(balance)
+            print(f"Current balance: {balance}")
+        case 2:
+            balance = withdraw(balance)
+            print(f"Current balance: {balance}")
+        case 0:
+            print("Goodbye!")
+        case _:
+            print("Invalid choice.")
+
+    return choice
+
 def deposit(b):
     amount = float(input("Amount to deposit: "))
     if amount > 0:
@@ -19,20 +40,6 @@ def withdraw(b):
     return b
 
 while True:
-    print("\n1. Deposit")
-    print("2. Withdraw")
-    print("0. Exit")
-    choice = int(input("Enter choice: "))
-
-    match choice:
-        case 1:
-            balance = deposit(balance)
-            print(f"Current balance: {balance}")
-        case 2:
-            balance = withdraw(balance)
-            print(f"Current balance: {balance}")
-        case 0:
-            print("Goodbye!")
-            break
-        case _:
-            print("Invalid choice.")
+    choice = show_menu()
+    if choice == 0:
+        break
