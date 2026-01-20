@@ -55,6 +55,7 @@ def view_questions():
         q = questionBank[i]
         print(f"\nQuestion {i + 1}: {q["question"]}")
         print("Options:", q["options"])
+        print("Answer:", q["answer"])
         print("Difficulty:", q["difficulty"])
 
 
