@@ -19,6 +19,30 @@ questionBank = [
         "options": ["Java", "Python", "C++"],
         "answer": "Python",
         "difficulty": "easy"
+    },
+    {
+        "question": "What is the capital of Sweden?",
+        "options": ["Stockholm", "Oslo", "Copenhagen"],
+        "answer": "Stockholm",
+        "difficulty": "easy"
+    },
+    {
+        "question": "What is 10 + 10?",
+        "options": ["18", "15", "20"],
+        "answer": "20",
+        "difficulty": "easy"
+    },
+    {
+        "question": "What is the colour of Haemoglobin?",
+        "options": ["Bright Red", "Yellow", "Green"],
+        "answer": "Bright Red",
+        "difficulty": "easy"
+    },
+    {
+        "question": "Albert Einstein had trouble with mathematics when he was in school.",
+        "options": ["True", "False"],
+        "answer": "False",
+        "difficulty": "easy"
     }
 ]
 
@@ -33,7 +57,7 @@ def start_quiz():
         for j in range(len(q["options"])):
             print(f"Option ({j + 1}) {q['options'][j]}")
 
-        answer = input("Answer (option number or text): ")
+        answer = input("Answer: ")
 
         # try catch block to check if answer is an int. this is because the answer can also be the index to the answer in the list
         try:
