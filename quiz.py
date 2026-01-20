@@ -1,5 +1,12 @@
 import random
 
+# analytical statistics
+question_db_stats = {
+    "highest_score": 0,
+    "history_scores": [],
+    "average_score": 0,
+}
+
 # List of questions and their answers
 question_db_main = [
     # EASY (5)
@@ -134,18 +141,19 @@ def start_quiz(subject, difficulty):
 
         answer = input("Enter index of answer: ")
 
-        # try catch block to check if answer is an int. this is because the answer can also be the index to the answer in the list
         try:
             index = int(answer) - 1
             user_answer = q["options"][index]
         except ValueError:
-            user_answer = answer
-            print("Value error, must be within range")
+            print("Invalid choice")
+            continue
         except IndexError:
-            user_answer = answer
-            print("Index error, must be within range")
+            print("Invalid choice")
+            continue
 
-        if user_answer.lower() == int(q["answer"].lower()):
+        correct_answer = q["options"][int(q["answer"]) - 1]
+
+        if user_answer.lower() == correct_answer.lower():
             score += 1
 
     print(f"\nYou have scored {score} out of {len(question_bank)}")
@@ -189,9 +197,7 @@ def get_subjects_from_qbank():
 
 def choose_quiz_details():
     subjects = get_subjects_from_qbank()
-    #subjects = ["maths", "science"]
     difficulty_levels = get_difficulty_levels_from_qbank()
-    #difficulty_levels = ["easy", "medium", "hard"]
 
     print("Choose the subject: ")
     for i in range(len(subjects)):
