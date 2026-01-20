@@ -35,7 +35,7 @@ def start_quiz():
 
         answer = input("Answer (option number or text): ")
 
-        # try catch block to check if answer is an int and index. this is because the answer can also be the index to the answer in the list
+        # try catch block to check if answer is an int. this is because the answer can also be the index to the answer in the list
         try:
             index = int(answer) - 1
             user_answer = q["options"][index]
@@ -53,7 +53,7 @@ def view_questions():
 
     for i in range(len(questionBank)):
         q = questionBank[i]
-        print(f"\nQuestion {i + 1}: {q['question']}")
+        print(f"\nQuestion {i + 1}: {q["question"]}")
         print("Options:", q["options"])
         print("Difficulty:", q["difficulty"])
 
