@@ -121,8 +121,6 @@ question_db_main = [
     }
 ]
 
-
-
 def start_quiz(subject, difficulty):
     score = 0
     question_bank = []
@@ -156,6 +154,7 @@ def start_quiz(subject, difficulty):
         if user_answer.lower() == correct_answer.lower():
             score += 1
 
+    question_db_stats["history_scores"].append(f"{score}/{len(question_bank)}")
     print(f"\nYou have scored {score} out of {len(question_bank)}")
 
 
@@ -168,6 +167,9 @@ def view_questions():
         print("Options:", q["options"])
         print("Answer:", q["answer"])
         print("Difficulty:", q["difficulty"])
+
+def view_statistics():
+    print(question_db_stats["history_scores"])
 
 def get_input_in_range(min_val, max_val):
     choice = -1
@@ -218,15 +220,18 @@ def main_menu():
         print("\n=== WELCOME TO THE QUIZ MENU ===")
         print("1. Start Quiz")
         print("2. Look at Questions")
+        print("3. Statistics")
         print("0. Exit")
 
-        choice = get_input_in_range(0, 2)
+        choice = get_input_in_range(0, 3)
 
         if choice == 1:
             subject, difficulty = choose_quiz_details()
             start_quiz(subject, difficulty)
         elif choice == 2:
             view_questions()
+        elif choice == 3:
+            view_statistics()
         elif choice == 0:
             print("Exit program")
             break
