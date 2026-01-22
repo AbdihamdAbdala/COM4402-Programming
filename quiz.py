@@ -157,7 +157,7 @@ def start_quiz(subject, difficulty):
             incorrect_answers.append(f"Question: {q["question"]}\nYour Incorrect Answer: {user_answer}\nCorrect Answer: {correct_answer}")
 
     calculated_score = score // len(question_bank)
-    question_db_stats["history_scores"].append(f"{score}/{len(question_bank)}")
+    question_db_stats["history_scores"].append([score/len(question_bank), f"{score}/{len(question_bank)}"])
 
     if calculated_score > question_db_stats["highest_score"]:
         question_db_stats["highest_score"] = calculated_score
@@ -167,7 +167,7 @@ def start_quiz(subject, difficulty):
         for i in incorrect_answers:
             print(i)
 
-    print(f"\nYou have scored {score} out of {len(question_bank)}")
+    print(f"\nYou have scored {score} out of {len(question_bank)}.")
 
 
 def view_questions():
@@ -180,9 +180,17 @@ def view_questions():
         print("Answer:", q["answer"])
         print("Difficulty:", q["difficulty"])
 
+def get_average_score():
+    total = 0
+    for i in range(len(question_db_stats["history_scores"])):
+        total += question_db_stats["history_scores"][i][0]
+    average_score = total / len(question_db_stats["history_scores"])
+    return average_score
+
 def view_statistics():
     print(question_db_stats["history_scores"])
     print(question_db_stats["highest_score"])
+    print(str(get_average_score()))
 
 def get_input_in_range(min_val, max_val):
     choice = -1
@@ -246,9 +254,9 @@ def main_menu():
         elif choice == 3:
             view_statistics()
         elif choice == 0:
-            print("Exit program")
+            print("Exit program.")
             break
         else:
-            print("Wrong choice")
+            print("Wrong choice.")
 
 main_menu()
