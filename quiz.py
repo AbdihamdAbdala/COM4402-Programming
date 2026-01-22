@@ -123,19 +123,19 @@ question_db_main = [
 
 def start_quiz(subject, difficulty):
     score = 0
-    question_bank = []
+    incorrect_answers = []
+    #question_bank = []
     question_bank = [q for q in question_db_main if q["subject"] == subject]
     question_bank = [q for q in question_bank if q["difficulty"] == difficulty]
-    print(question_bank)
 
     random.shuffle(question_bank) # randomize the questions
 
     for i in range(len(question_bank)):
         q = question_bank[i]
-        print(f"\nQuestion {i + 1}: {q['question']}")
+        print(f"\nQuestion {i + 1}: {q["question"]}")
 
         for j in range(len(q["options"])):
-            print(f"Option ({j + 1}) {q['options'][j]}")
+            print(f"Option ({j + 1}) {q["options"][j]}")
 
         answer = input("Enter index of answer: ")
 
@@ -153,8 +153,20 @@ def start_quiz(subject, difficulty):
 
         if user_answer.lower() == correct_answer.lower():
             score += 1
+        else:
+            incorrect_answers.append(f"Question: {q["question"]}\nYour Incorrect Answer: {user_answer}\nCorrect Answer: {correct_answer}")
 
+    calculated_score = score // len(question_bank)
     question_db_stats["history_scores"].append(f"{score}/{len(question_bank)}")
+
+    if calculated_score > question_db_stats["highest_score"]:
+        question_db_stats["highest_score"] = calculated_score
+
+    if len(incorrect_answers) > 0:
+        print("\nWRONG ANSWERS:")
+        for i in incorrect_answers:
+            print(i)
+
     print(f"\nYou have scored {score} out of {len(question_bank)}")
 
 
@@ -170,6 +182,7 @@ def view_questions():
 
 def view_statistics():
     print(question_db_stats["history_scores"])
+    print(question_db_stats["highest_score"])
 
 def get_input_in_range(min_val, max_val):
     choice = -1
