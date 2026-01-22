@@ -254,9 +254,9 @@ def main_menu():
         elif choice == 3:
             view_statistics()
         elif choice == 0:
-            print("Exit program.")
+            print("Exit program")
             break
         else:
-            print("Wrong choice.")
+            print("Wrong choice")
 
 main_menu()
