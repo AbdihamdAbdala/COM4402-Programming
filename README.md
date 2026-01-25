@@ -17,5 +17,5 @@ Users can choose a subject and difficulty level, answer multiple-choice question
 
 ## How to Run
 
-1. Make sure Python is installed.
+1. Make sure Python is installed
 2. Run quiz.py
