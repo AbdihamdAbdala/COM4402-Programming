@@ -158,7 +158,7 @@ def start_quiz(subject, difficulty):
         else:
             incorrect_answers.append(f"Question: {q['question']}\nYour Incorrect Answer: {user_answer}\nCorrect Answer: {correct_answer}")
 
-    calculated_score = score // len(question_bank)
+    calculated_score = score / len(question_bank)
     question_db_stats["history_scores"].append([score/len(question_bank), f"{score}/{len(question_bank)}"])
 
     if calculated_score > question_db_stats["highest_score"]:
