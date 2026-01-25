@@ -132,10 +132,10 @@ def start_quiz(subject, difficulty):
 
     for i in range(len(question_bank)):
         q = question_bank[i]
-        print(f"\nQuestion {i + 1}: {q["question"]}")
+        print(f"\nQuestion {i + 1}: {q['question']}")
 
         for j in range(len(q["options"])):
-            print(f"Option ({j + 1}) {q["options"][j]}")
+            print(f"Option ({j + 1}) {q['options'][j]}")
 
         answer = input("Enter index of answer: ")
 
@@ -154,7 +154,7 @@ def start_quiz(subject, difficulty):
         if user_answer.lower() == correct_answer.lower():
             score += 1
         else:
-            incorrect_answers.append(f"Question: {q["question"]}\nYour Incorrect Answer: {user_answer}\nCorrect Answer: {correct_answer}")
+            incorrect_answers.append(f"Question: {q['question']}\nYour Incorrect Answer: {user_answer}\nCorrect Answer: {correct_answer}")
 
     calculated_score = score // len(question_bank)
     question_db_stats["history_scores"].append([score/len(question_bank), f"{score}/{len(question_bank)}"])
@@ -175,7 +175,7 @@ def view_questions():
 
     for i in range(len(question_db_main)):
         q = question_db_main[i]
-        print(f"\nQuestion {i + 1}: {q["question"]}")
+        print(f"\nQuestion {i + 1}: {q['question']}")
         print("Options:", q["options"])
         print("Answer:", q["answer"])
         print("Difficulty:", q["difficulty"])
@@ -188,9 +188,9 @@ def get_average_score():
     return average_score
 
 def view_statistics():
-    print(question_db_stats["history_scores"])
-    print(question_db_stats["highest_score"])
-    print(str(get_average_score()))
+    print(f"Highest Quiz Score: {question_db_stats['highest_score']}")
+    print(f"Quiz History Scores: {question_db_stats['history_scores']}")
+    print(f"Average Score: {get_average_score()}")
 
 def get_input_in_range(min_val, max_val):
     choice = -1
