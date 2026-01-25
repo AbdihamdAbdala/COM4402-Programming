@@ -1,3 +1,5 @@
+# QUIZ APPLICATION
+
 import random
 
 # analytical statistics
